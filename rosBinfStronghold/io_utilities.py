@@ -25,6 +25,7 @@ def gc_content(string):
     except ZeroDivisionError:
         raise ZeroDivisionError("Cannot divide by zero.")
 
+
 def file_handler(file=None, mode=None):
     """
     Takes : 2 arguments file name and mode i.e. what is needed to be done with
@@ -44,3 +45,27 @@ def file_handler(file=None, mode=None):
     except ValueError:
         print(f"Could not open the file: {file} in mode '{mode}'")
         raise
+
+
+def translator(codon):
+    """
+    Takes a codon and returns the amino acid it encodes.
+    :param codon:
+    :return amino acid:
+    """
+    dict = {'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L', 'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S', 'UAU': 'Y',
+            'UAC': 'Y', 'UAA': 'Stop', 'UAG': 'Stop', 'UGU': 'C', 'UGC': 'C', 'UGA': 'Stop', 'UGG': 'W', 'CUU': 'L',
+            'AUU': 'I', 'GUU': 'V', 'CUC': 'L', 'AUC': 'I', 'GUC': 'V', 'CUA': 'L', 'AUA': 'I', 'GUA': 'V', 'CUG': 'L',
+            'AUG': 'M', 'GUG': 'V', 'CCU': 'P', 'ACU': 'T', 'GCU': 'A', 'CCC': 'P', 'ACC': 'T', 'GCC': 'A', 'CCA': 'P',
+            'ACA': 'T', 'GCA': 'A', 'CCG': 'P', 'ACG': 'T', 'GCG': 'A', 'CAU': 'H', 'AAU': 'N', 'GAU': 'D', 'CAC': 'H',
+            'AAC': 'N', 'GAC': 'D', 'CAA': 'Q', 'AAA': 'K', 'GAA': 'E', 'CAG': 'Q', 'AAG': 'K', 'GAG': 'E', 'CGU': 'R',
+            'AGU': 'S', 'GGU': 'G', 'CGC': 'R', 'AGC': 'S', 'GGC': 'G', 'CGA': 'R', 'AGA': 'R', 'GGA': 'G', 'CGG': 'R',
+            'AGG': 'R', 'GGG': 'G'}
+
+    try:
+        amino = dict[codon]
+        return amino
+    except KeyError:
+        print(f"Invalid codon: {codon}")
+        raise
+
