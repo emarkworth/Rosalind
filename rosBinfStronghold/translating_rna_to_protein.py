@@ -14,8 +14,11 @@ from sys import argv
 from io_utilities import translator
 
 
-def dna_to_protein(seq):
-    """Translate DNA to Protein"""
+def rna_to_protein(seq):
+    """Translate RNA to Protein
+    seq: RNA sequence input
+    return amino_str: String of amino acids made by translating input sequence string.
+    """
 
     # Handle seqs of all lengths except 0
     if len(seq) % 3 == 0:
@@ -49,5 +52,5 @@ if __name__ == "__main__":
     if len(argv) != 2:
         exit("Please input exactly one sequence")
         # Future proofing: allow input to come from file instead of command line
-    word = dna_to_protein(argv[1])
+    word = rna_to_protein(argv[1])
     print(word)

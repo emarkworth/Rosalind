@@ -47,11 +47,11 @@ def file_handler(file=None, mode=None):
         raise
 
 
-def translator(codon):
+def translator(codon=str):
     """
     Takes a codon and returns the amino acid it encodes.
-    :param codon:
-    :return amino acid:
+    :param codon: Three letter string of U, A, C, or G.
+    :return amino acid: Amino acid symbol of translated codon.
     """
     dict = {'UUU': 'F', 'UUC': 'F', 'UUA': 'L', 'UUG': 'L', 'UCU': 'S', 'UCC': 'S', 'UCA': 'S', 'UCG': 'S', 'UAU': 'Y',
             'UAC': 'Y', 'UAA': 'Stop', 'UAG': 'Stop', 'UGU': 'C', 'UGC': 'C', 'UGA': 'Stop', 'UGG': 'W', 'CUU': 'L',
