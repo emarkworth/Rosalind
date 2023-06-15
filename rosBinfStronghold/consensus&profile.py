@@ -13,6 +13,7 @@ Sample Dataset
 
 from sys import argv
 from io_utilities import file_handler
+#from Bio import SeqIO
 
 
 def profile(fasta):
@@ -55,12 +56,11 @@ def profile_print(prof_mat):
     :return:
     """
     for key, values in prof_mat.items():
-        counts = ''
+        counts = []
         for v in values:
             v = str(v)
-            counts += v
-            counts += ' '
-        print(f'{key}: {counts}')
+            counts.append(v)
+        print(f'{key}: {" ".join(counts)}')
 
 
 def consensus(prof_matrix):
@@ -69,11 +69,19 @@ def consensus(prof_matrix):
     :param prof_matrix: TODO
     :return: TODO
     """
-    #for val in prof_matrix.values():
-        #print(len(val))
-    consensus_string = ''
-    con_count = [0]
-    print(consensus_string)
+    string_length = 0
+    for val in prof_matrix.values():
+        string_length = len(val)
+    consensus_string = [0] * string_length
+    con_count = [0] * string_length
+
+    for key, val in prof_matrix.items():
+        for num, v in enumerate(val):
+            if v > con_count[num]:
+                con_count[num] = v
+                consensus_string[num] = key
+
+    print(''.join([str(x) for x in consensus_string]))
 
 
 if __name__ == "__main__":
