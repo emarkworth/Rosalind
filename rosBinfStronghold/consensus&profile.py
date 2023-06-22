@@ -7,13 +7,18 @@ Question 10 of Rosalind BINF Stronghold
 Named 'CONS' on the tree view of topic.
 
 Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in FASTA format.
-Return: A consensus string and profile matrix for the collection. (If several possible consensus strings exist, then you may return any one of them.)
+Return: A consensus string and profile matrix for the collection. (If several possible consensus strings exist,
+then you may return any one of them.)
 Sample Dataset
 """
 
+#################################################
+# This script is currently not formatting properly. to get correct formatting, see "proofing_con&prof.py".
+# It does give the right answer, however.
+#################################################
+
 from sys import argv
 from io_utilities import file_handler
-#from Bio import SeqIO
 
 
 def profile(fasta):
@@ -24,26 +29,35 @@ def profile(fasta):
     """
 
     # Make dictionary of nucleotide base lists
-    counter = 0
     prof_m = {'A': [], 'C': [], 'G': [], 'T': []}
+
+    # Make a list of sequences
+    sqlist = []
+    seq = ""
 
     for line in fasta:
         line = line.strip()
-        counter += 1
 
-        # Just count seq length from first seq (Line 2)
-        if counter == 2:
-            # Make all bases have lists of length of the seqs
-            for b in prof_m:
-                prof_m[b] = [0] * len(line)
-            for num, base in enumerate(line):
-                # For each seq, for each base in seq, +1 to list for position in dictionary
-                prof_m[base][num] += 1
+        # Don't add headers to sequence construction
+        if line.startswith(">"):
+            if seq != "":
+                # Add sequence being built to list of full sequences if a header is reached
+                sqlist.append(seq)
+            seq = ""
+        else:
+            seq += line
 
-        elif not line.startswith(">"):
-            for num, base in enumerate(line):
-                # For each seq, for each base in seq, +1 to list for position in dictionary
-                prof_m[base][num] += 1
+    # Catch leftover building sequence
+    sqlist.append(seq)
+
+    # Make all bases have lists of length of the seqs
+    for base in prof_m:
+        prof_m[base] = [0] * len(sqlist[0])
+
+    # For each seq, for each base in seq, +1 to list for position in dictionary
+    for full_len_seq in sqlist:
+        for num, base in enumerate(full_len_seq):
+            prof_m[base][num] += 1
 
     # Return dictionary of nuc base lists
     return prof_m
@@ -94,4 +108,3 @@ if __name__ == "__main__":
     # Print output
     consensus(pm)
     profile_print(pm)
-
