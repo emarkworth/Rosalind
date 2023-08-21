@@ -26,8 +26,8 @@ from sys import argv
 
 def exp_ofsp(p_types):
     """
-
-    :return:
+    :param: p_types: The amount of parents corresponding to each possible Genotype-pair.
+    :return: The expected amount of offspring displaying dominant phenotypes.
     """
 
     # Provide expected dominant offspring amounts for each genotype-couple (AA-AA or AA-Aa, etc.)
