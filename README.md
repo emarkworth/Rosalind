@@ -1,2 +1,2 @@
 # Rosalind
-Repo for recording my Rosalind code.
+Rosalind code - python village and bioinformatics stronghold.
