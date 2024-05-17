@@ -36,8 +36,8 @@ def exp_ofsp(p_types):
     # Instate value for summing offspring count
     offspring = 0
 
-    for count, pair in enumerate(p_types):
-        offspring += (probabilities[count + 1] * int(pair))
+    for pair, count in enumerate(p_types):
+        offspring += (probabilities[pair + 1] * int(count))
 
     return offspring
 
