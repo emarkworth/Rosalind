@@ -2,6 +2,7 @@
 """
 File Name: lcsm.py
 Edited: 04/04/2023
+        01/23/2025
 
 Question in Rosalind BINF Stronghold.
 Named 'LCSM' on the tree view of topic.
@@ -36,7 +37,7 @@ def longest_ss(infile):
     print(first_seq_sub_seqs)
 
 
-    print("CGTA" in "ACGTACGT")
+    #print("CGTA" in "ACGTACGT")
     #sub_str = []
      #for start in range(0, len(sequence)):
         #sub_str.append(sequence[start: start + 3])
@@ -55,7 +56,7 @@ def index_first_seq(first_seq, seq_length):
     """
     Breaks up a sequence into subseqs of set length, returns them.
     :param first_seq: The first sequence in a fasta file. Used as "seed" to find possible common strings.
-    param seq_length: To adjust the length of substrings the sequences should be split into.
+    :param seq_length: To adjust the length of substrings the sequences should be split into.
     :return: List of subseqs, in order.
     """
     subseqs = []
