@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 File Name: protein_mass_prtm.py
-Edited: 02/19/2023
+Edited: 02/19/2025
 
 Question in Rosalind BINF Stronghold.
 Named 'PRTM' on the tree view of topic.
